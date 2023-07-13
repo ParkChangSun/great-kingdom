@@ -1,2 +1,4 @@
 # great-kingdom
-toy...
+
+WIZ STONE - GREAT KINGDOM
+
