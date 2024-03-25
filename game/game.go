@@ -129,6 +129,14 @@ func (b Board) debug() {
 	fmt.Print("\n---------------------\n")
 }
 
+func (g *Game) SStart() {
+	g.board.putPiece(4, 4, Neutral)
+	g.turn = 1
+
+	// coin toss to set first player
+
+}
+
 func (g *Game) Start(host, guest string) {
 	g.board.putPiece(4, 4, Neutral)
 	g.turn = 1

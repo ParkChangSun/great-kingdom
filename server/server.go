@@ -42,13 +42,10 @@ func Start() {
 	gameRouter.HandleFunc("/games", lobby.LobbiesSource).Methods(http.MethodGet)
 
 	gameRouter.HandleFunc("/create", lobby.Create).Methods(http.MethodPost)
+	gameRouter.HandleFunc("/pass/{gameId}", lobby.CheckPassForJoin).Methods(http.MethodPost)
 
 	// ws
 	gameRouter.HandleFunc("/{gameId}", lobby.Join)
-	// gameRouter.HandleFunc("/{gameId}/chat", lobby.JoinLobbyChat)
-	// gameRouter.HandleFunc("/{gameId}/ready", lobby.PlayerReady)
-
-	// gameRouter.HandleFunc("/{gameId}/join", lobby.PlayerJoinLobby).Methods(http.MethodPost)
 
 	http.ListenAndServe(":8000", router)
 }

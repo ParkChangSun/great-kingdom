@@ -99,7 +99,7 @@ func SignIn(w http.ResponseWriter, r *http.Request) {
 		HttpOnly: true,
 		Secure:   true,
 		// set in http server
-		// SameSite: "Strict",
+		// SameSite: http.SameSiteNoneMode,
 	}
 	w.Header().Set("Set-Cookie", j.String())
 	json.NewEncoder(w).Encode(User{signInData.Id})
@@ -145,7 +145,7 @@ func JwtAuthMiddleware(next http.Handler) http.Handler {
 			return
 		}
 		if !token.Valid {
-			w.WriteHeader(http.StatusNetworkAuthenticationRequired)
+			w.WriteHeader(http.StatusUnauthorized)
 			return
 		}
 
